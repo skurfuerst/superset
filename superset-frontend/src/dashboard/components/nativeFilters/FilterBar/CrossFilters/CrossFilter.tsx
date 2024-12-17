@@ -36,6 +36,8 @@ const CrossFilter = (props: {
   const theme = useTheme();
   const dispatch = useDispatch();
 
+  console.log("FOO-crossfilter", props);
+
   const handleHighlightFilterSource = useCallback(
     (path?: string[]) => {
       if (path) {
