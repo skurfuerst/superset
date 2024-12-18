@@ -46,6 +46,7 @@ RUN --mount=type=bind,target=./package.json,src=./superset-frontend/package.json
     npm ci
 
 # Runs the webpack build process
+COPY superset_text.yml /app/superset_text.yml
 COPY superset-frontend /app/superset-frontend
 RUN npm run ${BUILD_CMD}
 
