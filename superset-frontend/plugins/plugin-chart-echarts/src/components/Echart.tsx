@@ -57,6 +57,7 @@ import {
   AriaComponent,
   MarkAreaComponent,
   MarkLineComponent,
+  BrushComponent,
 } from 'echarts/components';
 import { LabelLayout } from 'echarts/features';
 import { EchartsHandler, EchartsProps, EchartsStylesProps } from '../types';
@@ -93,6 +94,7 @@ use([
   TooltipComponent,
   VisualMapComponent,
   LabelLayout,
+  BrushComponent,
 ]);
 
 function Echart(

@@ -35,6 +35,7 @@ import Echart from '../components/Echart';
 import { TimeseriesChartTransformedProps } from './types';
 import { formatSeriesName } from '../utils/series';
 import { ExtraControls } from '../components/ExtraControls';
+import { getRangeExtraFormData } from "../../../../src/filters/utils";
 
 const TIMER_DURATION = 300;
 
@@ -60,6 +61,18 @@ export default function EchartsTimeseries({
 }: TimeseriesChartTransformedProps) {
   const { stack } = formData;
   const echartRef = useRef<EchartsHandler | null>(null);
+
+
+  echartOptions.brush = {
+    toolbox: ['lineX', 'clear'],
+    xAxisIndex: 0,
+    throttleType: 'debounce',
+    throttleDelay: 300,
+  };
+  // @ts-ignore
+  echartOptions.toolbox.show = true;
+
+
   // eslint-disable-next-line no-param-reassign
   refs.echartRef = echartRef;
   const clickTimer = useRef<ReturnType<typeof setTimeout>>();
@@ -158,6 +171,25 @@ export default function EchartsTimeseries({
     },
     mouseover: params => {
       onFocusedSeries(params.seriesName);
+    },
+    brushSelected: params => {
+      if (!params.batch[0]?.areas[0]?.coordRange[0]) {
+        return;
+      }
+      setDataMask({
+        extraFormData: getRangeExtraFormData(
+            xAxis.label,
+            params.batch[0].areas[0].coordRange[0],
+            params.batch[0].areas[0].coordRange[1]
+        ),
+        filterState: {
+          label: "Brushed Time",
+          value: null,
+          selectedValues: null,
+        },
+      });
+
+      //console.log("FOO BRUSHED", params, brushed, emitCrossFilters);
     },
     legendselectchanged: payload => {
       onLegendStateChanged?.(payload.selected);
