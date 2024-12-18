@@ -68,6 +68,7 @@ export default function EchartsTimeseries({
         throttleType: 'debounce',
         throttleDelay: 300,
     };
+    // @ts-ignore
     echartOptions.toolbox.show = true;
     console.log("FOOO XXX", echartOptions);
     // eslint-disable-next-line no-param-reassign
