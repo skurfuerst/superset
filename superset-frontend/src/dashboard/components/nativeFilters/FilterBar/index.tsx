@@ -295,6 +295,7 @@ const FilterBar: FC<FiltersBarProps> = ({
       isApplyDisabled,
     ],
   );
+  console.log("FOOFILTER,", dataMaskSelected, filterValues);
 
   const filterBarComponent =
     orientation === FilterBarOrientation.Horizontal ? (

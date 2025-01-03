@@ -40,6 +40,10 @@ const CrossFiltersVertical = () => {
     verboseMaps,
   });
 
+  console.log("FOOXY", selectedCrossFilters);
+
+
+
   return <VerticalCollapse crossFilters={selectedCrossFilters} />;
 };
 

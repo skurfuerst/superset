@@ -103,6 +103,8 @@ const HorizontalFilterBar: FC<HorizontalBarProps> = ({
     [chartIds, chartLayoutItems, dataMask, isCrossFiltersEnabled, verboseMaps],
   );
 
+  console.log("FOOCF", selectedCrossFilters);
+
   const hasFilters = filterValues.length > 0 || selectedCrossFilters.length > 0;
 
   return (

@@ -57,6 +57,7 @@ import {
   AriaComponent,
   MarkAreaComponent,
   MarkLineComponent,
+  BrushComponent,
 } from 'echarts/components';
 import { LabelLayout } from 'echarts/features';
 import { EchartsHandler, EchartsProps, EchartsStylesProps } from '../types';
@@ -93,6 +94,7 @@ use([
   TooltipComponent,
   VisualMapComponent,
   LabelLayout,
+  BrushComponent,
 ]);
 
 function Echart(
@@ -139,6 +141,7 @@ function Echart(
       chartRef.current?.getZr().on(name, handler);
     });
 
+    console.log("FOO SETTING CHART OPTIONS", echartOptions);
     chartRef.current.setOption(echartOptions, true);
   }, [echartOptions, eventHandlers, zrEventHandlers]);
 

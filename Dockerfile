@@ -63,6 +63,7 @@ RUN --mount=type=bind,source=./superset-frontend/package.json,target=./package.j
         echo "Skipping 'npm ci' in dev mode"; \
     fi
 
+COPY superset_text.yml /app/superset_text.yml
 # Runs the webpack build process
 COPY superset-frontend /app/superset-frontend
 
